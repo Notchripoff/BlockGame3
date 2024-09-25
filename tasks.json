@@ -1,0 +1,28 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build with Emscripten",
+            "type": "shell",
+            "command": "emcc",
+            "args": [
+                "main.c",
+                "-o",
+                "game.js",
+                "-s",
+                "USE_SDL=2",
+                "-s",
+                "WASM=1",
+                "-s",
+                "EXPORTED_FUNCTIONS='[_main]'",
+                "-s",
+                "EXTRA_EXPORTED_RUNTIME_METHODS=['ccall', 'cwrap']"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}
